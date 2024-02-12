@@ -24,6 +24,6 @@ jobs:
           file: ./docker-files/atomy-alpine/Dockerfile
           push: true
           tags: |
-            atomycloud/atomy-alpine:${{github.run_number}}
+            atomycloud/atomy-alpine:1.0
             atomycloud/atomy-alpine:latest
     
