@@ -1,0 +1,29 @@
+name: atomy-alpine
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4.1.1
+
+      - name: 🔒️ DockerHub Login
+        uses: docker/login-action@v3.0.0
+        with:
+         username: ${{secrets.DOCKERHUB_USER}}
+         password: ${{secrets.DOCKERHUB_PWD}}
+      
+      - name: 🔧 Building Atomy Alpine container image
+        uses: docker/build-push-action@v5.1.0
+        with:
+          context: ./docker-files/atomy-alpine
+          file: ./docker-files/atomy-alpine/Dockerfile
+          push: true
+          tags: |
+            atomycloud/atomy-alpine:${{github.run_number}}
+            atomycloud/atomy-alpine:latest
+    
