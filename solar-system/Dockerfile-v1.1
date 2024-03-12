@@ -1,0 +1,17 @@
+# AtomyCloud - Solar System Container Image | solar-system:1.1
+# IMAGE: Debian GNU/Linux + nginx/1.25.4 + Solar System HTML Site
+# docker run -d -p 8080:80 atomycloud/solar-system:1.1
+FROM atomycloud/base:alpine-v3.19.1
+
+RUN apk update && apk add nginx --no-cache
+RUN adduser -D -g 'www' www && mkdir /www
+RUN chown -R www:www /var/lib/nginx && chown -R www:www /www
+RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
+RUN apk add openrc --no-cache
+RUN mkdir -p /run/openrc && touch /run/openrc/softlevel
+RUN rc-update add nginx default
+
+COPY ./files /www
+RUN mv ./files/nginx.conf /etc/nginx/
+
+ENTRYPOINT ["/sbin/init"]
