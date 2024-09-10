@@ -2,7 +2,7 @@ name: Pull Alpine BaseOS Container
 
 on:
   schedule:
-    - cron: '0 8 * * 1'
+    - cron: '5 * * * *'
 
 jobs:
   build-and-push:
