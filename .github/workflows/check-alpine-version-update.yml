@@ -18,7 +18,7 @@ jobs:
       run: |
         URL_BASE="https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/x86_64/alpine-minirootfs"
         EXT=".tar.gz"
-        LAST_VERSION=$(tail -n 1 https://github.com/AtomyCloud/docker-images/blob/main/.github/workflows/alpine/last_version.txt)
+        LAST_VERSION=$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/.github/workflows/alpine/last_version.txt | tail -n 1)
         URL="${URL_BASE}-${LAST_VERSION}-x86_64${EXT}"
 
     - name: Store version in file
