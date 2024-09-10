@@ -15,11 +15,11 @@ jobs:
       - name: 🔧 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Download Alpine MinirootFS
+      - name: ⏬ Download Alpine MinirootFS
         run: |
           curl -L -o alpine-minirootfs-3.20.3-x86_64.tar.gz https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/x86_64/alpine-minirootfs-3.20.3-x86_64.tar.gz
 
-      - name: Import Docker Image && Tag Docker Image
+      - name: 🆕 Import Docker Image && Tag Docker Image
         run: |
           docker image import alpine-minirootfs-3.20.3-x86_64.tar.gz atomycloud/os:alpine-minirootfs-3.20.3-x86_64
 
@@ -29,6 +29,6 @@ jobs:
          username: ${{secrets.DOCKERHUB_USER}}
          password: ${{secrets.DOCKERHUB_PWD}}
 
-      - name: 👍 Push Docker Image
+      - name: 🆗 Push Docker Image
         run: |
           docker push atomycloud/os:alpine-minirootfs-3.20.3-x86_64
