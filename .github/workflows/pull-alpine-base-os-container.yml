@@ -1,9 +1,8 @@
 name: Pull Alpine BaseOS Container
 
 on:
-  push:
-    paths:
-      - docker-images/os/alpine/pull-alpine-base-os-container.yml
+  schedule:
+    - cron: '0 8 * * 1'
 
 jobs:
   build-and-push:
