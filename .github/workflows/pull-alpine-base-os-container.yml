@@ -1,8 +1,10 @@
 name: Pull Alpine BaseOS Container
 
 on:
-  schedule:
-    - cron: '0 8 * * 1'
+  push:
+    branches: ["main"]
+    paths:
+      - docker-images/blob/main/.github/workflows/alpine/last_version.txt
 
   workflow_dispatch:
 
@@ -19,11 +21,17 @@ jobs:
 
       - name: ⏬ Download Alpine MinirootFS
         run: |
-          curl -L -o alpine-minirootfs-3.20.3-x86_64.tar.gz https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/x86_64/alpine-minirootfs-3.20.3-x86_64.tar.gz
+          URL_BASE="https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/x86_64/"
+          OS_VERSION="alpine-minirootfs"
+          EXT=".tar.gz"
+          LAST_VERSION=$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/.github/workflows/alpine/last_version.txt | tail -n 1)
+          URL="${URL_BASE}${OS_VERSION}-${LAST_VERSION}-x86_64${EXT}"
+
+          curl -L -o $OS_VERSION-$LAST_VERSION-x86_64-$EXT $URL
 
       - name: 🆕 Import Docker Image && Tag Docker Image
         run: |
-          docker image import alpine-minirootfs-3.20.3-x86_64.tar.gz atomycloud/os:alpine-minirootfs-3.20.3-x86_64
+          docker image import $OS_VERSION-$LAST_VERSION-x86_64-$EXT atomycloud/os:$OS_VERSION-$LAST_VERSION-x86_64-$EXT
 
       - name: 🔒️ DockerHub Login
         uses: docker/login-action@v3.0.0
@@ -33,4 +41,4 @@ jobs:
 
       - name: 🆗 Push Docker Image
         run: |
-          docker push atomycloud/os:alpine-minirootfs-3.20.3-x86_64
+          docker push atomycloud/os:$OS_VERSION-$LAST_VERSION-x86_64-$EXT
