@@ -39,7 +39,7 @@ jobs:
 
       - name: 🆕 Import Docker Image && Tag Docker Image
         run: |
-          docker image import "$FILE" "$TAG_VERSION"
+          docker image import alpine-minirootfs-3.20.0-x86_64.tar.gz atomycloud/os:alpine-minirootfs-3.20.0-x86_64
 
       - name: 🔒️ DockerHub Login
         uses: docker/login-action@v3.0.0
