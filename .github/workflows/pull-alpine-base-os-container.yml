@@ -2,9 +2,8 @@ name: Pull Alpine BaseOS Container
 
 on:
   push:
-    branches: ["main"]
     paths:
-      - docker-images/blob/main/.github/workflows/alpine/last_version.txt
+      - '.github/workflows/alpine/last_version.txt'
 
   workflow_dispatch:
 
