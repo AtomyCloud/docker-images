@@ -1,0 +1,14 @@
+name: Hello World
+
+on:
+  workflow_dispatch:
+
+jobs:
+  print-variable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Define and print a variable
+        run: |
+          MY_VARIABLE="Hello, World!"
+          echo "The value of MY_VARIABLE is: $MY_VARIABLE"
+
