@@ -40,4 +40,4 @@ jobs:
 
       - name: 🆗 Push Docker Image
         run: |
-          docker push atomycloud/os:$OS_VERSION-$LAST_VERSION-x86_64-$EXT
+          docker push $DOCKER_HUB_REPO$OS_VERSION$LAST_VERSION
