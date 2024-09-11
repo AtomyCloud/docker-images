@@ -30,7 +30,7 @@ jobs:
       - name: 🆕 Import Docker Image && Tag Docker Image
         run: |
           DOCKER_HUB_REPO="atomycloud/os:"
-          docker image import $OS_VERSION$LAST_VERSION$EXT $DOCKER_HUB_REPO$OS_VERSION$LAST_VERSION$EXT
+          docker image import $OS_VERSION$LAST_VERSION$EXT $DOCKER_HUB_REPO$OS_VERSION$LAST_VERSION
 
       - name: 🔒️ DockerHub Login
         uses: docker/login-action@v3.0.0
