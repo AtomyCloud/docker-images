@@ -22,16 +22,17 @@ jobs:
         run: |
           URL_BASE="https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/x86_64/"
           OS_VERSION="alpine-minirootfs-"
-          EXT="-x86_64.tar.gz"
+          OS_TYPE="-x86_64"
+          EXT=".tar.gz"
           LAST_VERSION=$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/.github/workflows/alpine/last_version.txt | tail -n 1)
-          URL="${URL_BASE}${OS_VERSION}${LAST_VERSION}${EXT}"
+          URL="${URL_BASE}${OS_VERSION}${LAST_VERSION}${OS_TYPE}${EXT}"
           curl -O $URL
 
       - name: 🆕 Import Docker Image && Tag Docker Image
         run: |
           DOCKER_HUB_REPO="atomycloud/os:"
           TAG_VERSION="${DOCKER_HUB_REPO}${OS_VERSION}${LAST_VERSION}"
-          FILE="${OS_VERSION}${LAST_VERSION}${EXT}"
+          FILE="${OS_VERSION}${LAST_VERSION}${OS_TYPE}${EXT}"
           docker image import $FILE $TAG_VERSION
 
       - name: 🔒️ DockerHub Login
