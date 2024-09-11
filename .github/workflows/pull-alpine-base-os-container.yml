@@ -27,12 +27,12 @@ jobs:
           LAST_VERSION=$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/.github/workflows/alpine/last_version.txt | tail -n 1)
           URL="${URL_BASE}${OS_VERSION}${LAST_VERSION}${OS_TYPE}${EXT}"
           curl -L -O $URL
-
-      - name: 🆕 Import Docker Image && Tag Docker Image
-        run: |
           DOCKER_HUB_REPO="atomycloud/os:"
           TAG_VERSION="${DOCKER_HUB_REPO}${OS_VERSION}${LAST_VERSION}${OS_TYPE}"
           FILE="${OS_VERSION}${LAST_VERSION}${OS_TYPE}${EXT}"
+
+      - name: 🆕 Import Docker Image && Tag Docker Image
+        run: |
           docker image import "$FILE" "$TAG_VERSION"
 
       - name: 🔒️ DockerHub Login
