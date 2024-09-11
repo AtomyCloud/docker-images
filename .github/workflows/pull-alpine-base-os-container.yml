@@ -25,12 +25,14 @@ jobs:
           EXT="-x86_64.tar.gz"
           LAST_VERSION=$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/.github/workflows/alpine/last_version.txt | tail -n 1)
           URL="${URL_BASE}${OS_VERSION}${LAST_VERSION}${EXT}"
-          curl -L -o $OS_VERSION$LAST_VERSION$EXT $URL
+          curl -O $URL
 
       - name: 🆕 Import Docker Image && Tag Docker Image
         run: |
           DOCKER_HUB_REPO="atomycloud/os:"
-          docker image import $OS_VERSION$LAST_VERSION$EXT $DOCKER_HUB_REPO$OS_VERSION$LAST_VERSION
+          TAG_VERSION="${DOCKER_HUB_REPO}${OS_VERSION}${LAST_VERSION}"
+          FILE="${OS_VERSION}${LAST_VERSION}${EXT}"
+          docker image import $FILE $TAG_VERSION
 
       - name: 🔒️ DockerHub Login
         uses: docker/login-action@v3.0.0
