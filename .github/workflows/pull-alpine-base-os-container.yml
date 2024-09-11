@@ -42,4 +42,4 @@ jobs:
 
       - name: 🆗 Push Docker Image
         run: |
-          docker push $DOCKER_HUB_REPO$OS_VERSION$LAST_VERSION
+          docker push $TAG_VERSION
