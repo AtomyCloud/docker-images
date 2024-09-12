@@ -24,9 +24,7 @@ jobs:
         EXT=".tar.gz"
         LAST_VERSION=$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/.github/workflows/alpine/last_version.txt | tail -n 1)
         URL="${URL_BASE}-${LAST_VERSION}-x86_64${EXT}"
-
-    - name: Store version in file
-      run: echo $LAST_VERSION >> .github/workflows/alpine/last_version.txt
+        echo $LAST_VERSION >> .github/workflows/alpine/last_version.txt
 
     - name: Commit version file
       uses: EndBug/add-and-commit@v9
