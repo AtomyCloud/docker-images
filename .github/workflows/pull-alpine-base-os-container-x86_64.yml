@@ -1,4 +1,4 @@
-name: Pull Alpine BaseOS Container
+name: Pull Alpine BaseOS Container -x86_64
 
 on:
   push:
