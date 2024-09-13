@@ -20,7 +20,7 @@ jobs:
     - name: ➡️ Get Alpine version from URL
       run: |
         URL_BASE="https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/s390x/"
-        FILE=$(curl -s $base_url | grep -oP 'alpine-minirootfs-[0-9]{1}.[0-9]{2}.[0-9]{1}')
+        FILE=$(curl -s $URL_BASE| grep -oP 'alpine-minirootfs-[0-9]{1}.[0-9]{2}.[0-9]{1}')
         FULL_URL="${URL_BASE}${FILE}"
         LAST_VERSION=$(echo $full_url | grep -oP '([0-9]{1}\.[0-9]{2}\.[0-9]{1})' | tail -n 1)
         echo $LAST_VERSION >> .github/workflows/alpine/s390x/last_version.txt
