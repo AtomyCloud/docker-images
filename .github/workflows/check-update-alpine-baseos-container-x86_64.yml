@@ -1,8 +1,8 @@
-name: Check Alpine Version Update
+name: Check Update Alpine BaseOS Container -x86_64
 
 on:
-  schedule:
-    - cron: '0 0 * * 0'
+  #schedule:
+    #- cron: '0 0 * * 0'
   workflow_dispatch:
 
 permissions:
@@ -17,19 +17,19 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Get Alpine version from URL
+    - name: ➡️ Get Alpine version from URL
       id: get_version
       run: |
         URL_BASE="https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/x86_64/alpine-minirootfs"
         EXT=".tar.gz"
-        LAST_VERSION=$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/.github/workflows/alpine/last_version.txt | tail -n 1)
+        LAST_VERSION=$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/.github/workflows/alpine/x86_64/last_version.txt | tail -n 1)
         URL="${URL_BASE}-${LAST_VERSION}-x86_64${EXT}"
         echo $LAST_VERSION >> .github/workflows/alpine/last_version.txt
 
     - name: Commit version file
       uses: EndBug/add-and-commit@v9
       with:
-        add: '.github/workflows/alpine/last_version.txt'
-        message: 'Update Alpine version'
+        add: '.github/workflows/alpine/x86_64/last_version.txt'
+        message: '💫Update (Alpine BaseOS Container -x86_64)'
         author_name: 'github-actions'
         author_email: 'actions@github.com'
