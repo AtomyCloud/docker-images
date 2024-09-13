@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Create or append to last_version.txt
-      run: echo "3.20.2" >> last_version.txt
+      run: echo "3.20.2" >> '.github/workflows/alpine/s390x/test.txt'
 
     - name: Commit and push changes
       run: |
