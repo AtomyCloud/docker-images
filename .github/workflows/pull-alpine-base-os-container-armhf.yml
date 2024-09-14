@@ -3,7 +3,7 @@ name: Pull Alpine BaseOS Container - armhf
 on:
   push:
     paths:
-      - '.github/workflows/alpine/armhf/last_version.txt'
+      - 'alpine/armhf/last_version.txt'
 
   workflow_dispatch:
 
@@ -24,7 +24,7 @@ jobs:
           OS_VERSION="alpine-minirootfs-"
           OS_TYPE="-armhf"
           EXT=".tar.gz"
-          LAST_VERSION="$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/.github/workflows/alpine/armhf/last_version.txt | tail -n 1)"
+          LAST_VERSION="$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/alpine/armhf/last_version.txt | tail -n 1)"
           URL="${URL_BASE}${OS_VERSION}${LAST_VERSION}${OS_TYPE}${EXT}"
           FILE="${OS_VERSION}${LAST_VERSION}${OS_TYPE}${EXT}"
           DOCKER_HUB_REPO="atomycloud/os:"
@@ -43,7 +43,7 @@ jobs:
           OS_VERSION="alpine-minirootfs-"
           OS_TYPE="-armhf"
           EXT=".tar.gz"
-          LAST_VERSION="$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/.github/workflows/alpine/armhf/last_version.txt | tail -n 1)"
+          LAST_VERSION="$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/alpine/armhf/last_version.txt | tail -n 1)"
           URL="${URL_BASE}${OS_VERSION}${LAST_VERSION}${OS_TYPE}${EXT}"
           FILE="${OS_VERSION}${LAST_VERSION}${OS_TYPE}${EXT}"
           DOCKER_HUB_REPO="atomycloud/os:"
