@@ -1,19 +1,17 @@
-name: Pull Test 3
+name: Pull Test3
 
 on:
   push:
     paths:
-      - test3.txt
-
-  workflow_dispatch:
+      - hello.txt
 
 jobs:
-  run-on-text-change:
+  on-hello-change:
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         
-      - name: Do something when text.txt changes
-        run: echo "text.txt has changed!"
+      - name: Perform action on hello.txt change
+        run: echo "hello.txt has been changed!"
