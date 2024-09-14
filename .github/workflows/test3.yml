@@ -1,6 +1,7 @@
 name: Test3
 
 on:
+  workflow_run:
   workflow_dispatch:
 
 jobs:
