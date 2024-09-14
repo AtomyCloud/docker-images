@@ -3,7 +3,7 @@ name: Pull Test 3
 on:
   push:
     paths:
-      - 'test3.txt'
+      - test3.txt
 
   workflow_dispatch:
 
