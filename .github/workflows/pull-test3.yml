@@ -1,0 +1,17 @@
+name: Pull Test 3
+
+on:
+  push:
+    paths:
+      - 'test3.txt'
+
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⏬ Download Alpine MinirootFS
+        run: |
+          echo "It´s works"
