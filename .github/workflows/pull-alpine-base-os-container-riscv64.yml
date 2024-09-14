@@ -3,7 +3,7 @@ name: Pull Alpine BaseOS Container - riscv64
 on:
   push:
     paths:
-      - '.github/workflows/alpine/riscv64/last_version.txt'
+      - 'alpine/riscv64/last_version.txt'
 
   workflow_dispatch:
 
@@ -24,7 +24,7 @@ jobs:
           OS_VERSION="alpine-minirootfs-"
           OS_TYPE="-riscv64"
           EXT=".tar.gz"
-          LAST_VERSION="$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/.github/workflows/alpine/riscv64/last_version.txt | tail -n 1)"
+          LAST_VERSION="$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/alpine/riscv64/last_version.txt | tail -n 1)"
           URL="${URL_BASE}${OS_VERSION}${LAST_VERSION}${OS_TYPE}${EXT}"
           FILE="${OS_VERSION}${LAST_VERSION}${OS_TYPE}${EXT}"
           DOCKER_HUB_REPO="atomycloud/os:"
@@ -43,7 +43,7 @@ jobs:
           OS_VERSION="alpine-minirootfs-"
           OS_TYPE="-riscv64"
           EXT=".tar.gz"
-          LAST_VERSION="$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/.github/workflows/alpine/riscv64/last_version.txt | tail -n 1)"
+          LAST_VERSION="$(curl -s https://raw.githubusercontent.com/AtomyCloud/docker-images/main/alpine/riscv64/last_version.txt | tail -n 1)"
           URL="${URL_BASE}${OS_VERSION}${LAST_VERSION}${OS_TYPE}${EXT}"
           FILE="${OS_VERSION}${LAST_VERSION}${OS_TYPE}${EXT}"
           DOCKER_HUB_REPO="atomycloud/os:"
