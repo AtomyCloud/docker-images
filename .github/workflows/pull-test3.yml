@@ -8,10 +8,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-push:
+  run-on-text-change:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: ⏬ Download Alpine MinirootFS
-        run: |
-          echo "It´s works"
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Do something when text.txt changes
+        run: echo "text.txt has changed!"
