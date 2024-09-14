@@ -1,8 +1,5 @@
 name: Test 3
 
-permissions:
-  actions: write
-
 on:
   push:
     branches:
@@ -20,7 +17,8 @@ jobs:
     - name: Create or append to last_version.txt
       run: | 
         VERSION="3.20.0"
-        echo  >> alpine/generic/last_version.txt
+        echo  >> test3.txt
+        #echo  >> alpine/generic/last_version.txt
 
     - name: Commit and push changes
       run: |
