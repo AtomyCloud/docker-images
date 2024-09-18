@@ -2,7 +2,6 @@
 # IMAGE: Alpine:3.20.3 + Apache:2.4.62
 # docker run -d -p 8080:80 atomycloud/alpine:3.20.3-x86_64-apache-2.4.62
 FROM atomycloud/os:alpine-minirootfs-3.20.3-x86_64
-MAINTAINER AtomyCloud
 
 RUN apk update && apk add apache2 --no-cache && \
     addgroup -g 111 www; adduser -u 111 -D -S -G www www && \
