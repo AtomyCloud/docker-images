@@ -1,0 +1,30 @@
+name: TAG - alpine:3.20.3-x86_64-apache-2.4.62
+
+on:
+  push:
+    paths:
+      - 'docker-images/docker-files/alpine/3.20.3-x86_64-apache-2.4.62/Dockerfile'
+
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ✔️ Checkout Repository
+        uses: actions/checkout@v4.1.1
+
+      - name: 🔒️ DockerHub Login
+        uses: docker/login-action@v3.0.0
+        with:
+         username: ${{secrets.DOCKERHUB_USER}}
+         password: ${{secrets.DOCKERHUB_PWD}}
+      
+      - name: 🔧 Building AtomyCloud Alpine Container Image
+        uses: docker/build-push-action@v5.1.0
+        with:
+          file: ./docker-images/docker-files/alpine/3.20.3-x86_64-apache-2.4.62/Dockerfile
+          push: true
+          tags: |
+            atomycloud/alpine:3.20.3-x86_64-apache-2.4.62
